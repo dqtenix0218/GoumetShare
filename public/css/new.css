@@ -1,0 +1,17 @@
+.place {
+  margin: 4px 0px;
+  width: 50%;
+  height: 30px;
+}
+.genre {
+  margin: 4px 0px;
+  width: 75%;
+  height: 30px;
+}
+.address {
+  margin: 4px 0px;
+  height: 30px;
+}
+.error-block {
+  color: red;
+}

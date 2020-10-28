@@ -1,0 +1,80 @@
+.post-profile-icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.card-wrap {
+  margin: 10px;
+}
+.no-text-decoration:hover {
+  text-decoration: none;
+}
+.black-color {
+  color: #262626;
+}
+.love {
+  background-image: url("/images/parts5.png");
+  background-repeat: no-repeat;
+  height: 36px;
+  width: 36px;
+  background-size: 25px !important;
+}
+.post-time {
+  margin: 0;
+  color: #999;
+  font-size: 10px;
+}
+.post-sub-text {
+  text-decoration: none;
+  color: #262626;
+}
+.delete-post-icon {
+  background-image: url("/images/parts9.png");
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  background-size: 20px !important;
+  color: #262626;
+  font-size: 20px;
+}
+.loved {
+  background-image: url("/images/parts7.png");
+  background-repeat: no-repeat;
+  height: 36px;
+  width: 36px;
+  background-size: 29px !important;
+}
+.hide-text {
+  display: block;
+  overflow: hidden;
+  text-indent: 110%;
+  white-space: nowrap;
+}
+.delete-comment {
+  background-image: url("/images/parts8.png");
+  background-repeat: no-repeat;
+  width: 11px;
+  height: 11px;
+  float: right;
+  margin: 5px 0 0 10px;
+  background-size: 9px !important;
+}
+.like-text {
+  font-size: 6pt;
+}
+.comment_list {
+  font-size: 9pt;
+}
+.address-link {
+  text-decoration: none;
+  font-size: 10pt;
+}
+.place-text {
+  color: #696969;
+  font-size: 10pt;
+}
+.pin-icon {
+  height: 16px;
+  width: 16px;
+}
