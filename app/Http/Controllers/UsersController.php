@@ -28,7 +28,7 @@ class UsersController extends Controller
             ->orderBy('created_at', 'desc')
             ->simplePaginate(10);
 
-        return view('user/show', ['user' => $user, 'posts' => $posts, 'likes'=>$likes]);
+        return view('user/show', ['user' => $user, 'posts' => $posts]);
     }
 
     public function edit()
