@@ -28,6 +28,11 @@
   color: black;
   margin: 0px 20px;
 }
+.navbar .search-btn {
+  border-color: black;
+  color: black;
+  border-width: 1.5px;
+}
 body {
   background-color: #cff;
   font-size: 14px;
@@ -87,8 +92,8 @@ footer {
 }
 .round-img {
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
 }
 .edit-profile-btn {
   margin: 15px 0 0 15px;

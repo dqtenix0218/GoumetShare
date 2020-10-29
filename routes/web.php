@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PostsController@index');
+Route::post('/', 'PostsController@search');
 
 
 Auth::routes();

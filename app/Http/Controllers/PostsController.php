@@ -19,9 +19,25 @@ class PostsController extends Controller
     {
         //レコードを取得
         $posts = Post::orderBy('created_at', 'desc')
-            ->simplePaginate(10);
+            ->simplePaginate(5);
 
         return view('post/index', ['posts' => $posts]);
+    }
+
+    public function search(Request $request)
+    {
+        $search_posts = Post::where('genre', 'like', '%' . $request->search . '%')
+            ->orwhere('caption', 'like', '%' . $request->search . '%')
+            ->orWhere('place', 'like', '%' . $request->search . '%')
+            ->orderBy('created_at', 'desc')->simplePaginate(5);
+
+        $validator = Validator::make($request->all(), ['search' => 'required']);
+        if ($validator->fails()) {
+            return redirect("/");
+        } else {
+
+            return view('post/index', ['posts' => $search_posts]);
+        }
     }
 
     public function new()

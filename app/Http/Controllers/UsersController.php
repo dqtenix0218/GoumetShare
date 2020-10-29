@@ -26,7 +26,7 @@ class UsersController extends Controller
 
         $posts = Post::where('user_id', $user_id)
             ->orderBy('created_at', 'desc')
-            ->simplePaginate(10);
+            ->simplePaginate(5);
 
         return view('user/show', ['user' => $user, 'posts' => $posts]);
     }
