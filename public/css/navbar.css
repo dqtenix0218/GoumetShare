@@ -1,5 +1,6 @@
 .navbar {
   background-color: #09f;
+  border-bottom: 1px solid rgba(0, 0, 0, .0975);
 }
 .navbar__brand {
   height: 65px;

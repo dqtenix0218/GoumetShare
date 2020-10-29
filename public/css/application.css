@@ -1,5 +1,6 @@
 .navbar {
   background-color: #09f;
+  border-bottom: 1px solid rgba(0, 0, 0, .0975);
 }
 .navbar__brand {
   height: 65px;
@@ -86,6 +87,9 @@ footer {
   .devise-card {
     background-color: #fafafa;
   }
+}
+footer {
+  margin: 30px;
 }
 .profile-wrap {
   margin: 40px 0px;
