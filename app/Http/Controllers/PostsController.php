@@ -26,6 +26,7 @@ class PostsController extends Controller
 
     public function search(Request $request)
     {
+        //検索結果を取得
         $search_posts = Post::where('genre', 'like', '%' . $request->search . '%')
             ->orwhere('caption', 'like', '%' . $request->search . '%')
             ->orWhere('place', 'like', '%' . $request->search . '%')

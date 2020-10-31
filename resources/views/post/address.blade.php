@@ -17,8 +17,8 @@
     var geocoder = new google.maps.Geocoder();
 
     geocoder.geocode({ 'address': address}, function(results, status){
-      console.log(results, status)
       if (status == 'OK') {
+        //住所から緯度・経度を取得
         var lat = results[0].geometry.location.lat();
         var lng = results[0].geometry.location.lng();
         //console.log(lat,lng);
@@ -26,16 +26,16 @@
           lat: lat,
           lng: lng
         }
-
+        //マップを表示
         var map = new google.maps.Map(document.getElementById('map'), {
-        center: center,
-        zoom: 14 //地図のズームを設定
-      });
-
-      var marker=new google.maps.Marker({
-        position: center,
-        map:map
-      });
+          center: center,
+          zoom: 14
+        });
+        //マーカーを作成
+        var marker=new google.maps.Marker({
+          position: center,
+          map:map
+        });
     }else {
       alert("場所が見つかりませんでした。投稿された住所に間違いがある可能性があります。");
     }

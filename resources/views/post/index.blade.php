@@ -16,7 +16,6 @@
                 @else
                   <img class="round-img" src="{{ asset('/images/blank_profile.png') }}"/>
                 @endif--}}
-                {{----}}
             @if ($post->user->image)
                 <img class="post-profile-icon round-img" src="data:image/png;base64,{{ $post->user->image }}"/>
             @else
