@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 
+    protected $guarded=['id'];
+
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -26,4 +28,19 @@ class Post extends Model
     {
         return $this->hasMany('App\Comment');
     }
+
+    public function scopeSearch($query, $str)
+    {
+        $query->where('genre', 'like', '%' . $str . '%')
+            ->orwhere('caption', 'like', '%' . $str . '%')
+            ->orWhere('place', 'like', '%' . $str . '%');
+
+        return $query;
+    }
+
+    public function scopeGetPostsByUserId($query, $user_id)
+    {
+        return $query->where('user_id', $user_id);
+    }
+
 }

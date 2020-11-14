@@ -11,11 +11,7 @@ use Illuminate\Http\Request;
 
 class LikesController extends Controller
 {
-    public function __construct()
-    {
-        // ログインしていないときログインページへ遷移
-        $this->middleware('auth');
-    }
+
 
     public function store(Request $request)
     {

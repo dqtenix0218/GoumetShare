@@ -37,6 +37,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function scopeGetUserById($query,$id){
+        return $query->where('id',$id);
+    }
+
     public function posts()
     {
         return $this->hasMany('App\Post');

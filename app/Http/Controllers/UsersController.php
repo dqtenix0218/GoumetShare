@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Post;
 use App\Like;
+use App\Http\Requests\UserModelRequest;
 use Auth;
 use Validator;
 use Illuminate\Http\Request;
@@ -12,19 +13,13 @@ use Illuminate\Http\Request;
 class UsersController extends Controller
 {
 
-    public function __construct()
-    {
-        //ログインしていないときログイン画面へ遷移
-        $this->middleware('auth');
-    }
-
     public function show($user_id)
     {
         //レコードを取得
-        $user = User::where('id', $user_id)
+        $user = User::getUserById($user_id)
             ->firstOrFail();
 
-        $posts = Post::where('user_id', $user_id)
+        $posts = Post::getPostsByUserId($user_id)
             ->orderBy('created_at', 'desc')
             ->simplePaginate(5);
 
@@ -38,28 +33,8 @@ class UsersController extends Controller
         return view('user/edit', ['user' => $user]);
     }
 
-    public function update(Request $request)
+    public function update(UserModelRequest $request)
     {
-        //バリデーションルール、メッセージ
-        $rules = [
-            'user_name' => 'required|string|max:255',
-            'user_password' => 'required|string|min:6|confirmed',
-            'user_profile_photo' => 'max:1024'
-        ];
-        $messages = [
-            'user_profile_photo.max' => '※画像は1MBまでです',
-            'required' => '※必須項目です',
-            'max' => '※225文字以内で入力して下さい',
-            'min' => '※パスワードは6文字以上で入力して下さい',
-            'confirmed' => '※パスワードが一致しません'
-        ];
-        //バリデーション
-        $validator = Validator::make($request->all(), $rules, $messages);
-
-        //バリデーションの結果がエラーの場合
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator->errors())->withInput();
-        }
 
         $user = User::find($request->id);
         $user->name = $request->user_name;
