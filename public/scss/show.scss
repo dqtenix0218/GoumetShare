@@ -17,3 +17,28 @@
     border-color: #dbdbdb;
     font-size: 14px;
 }
+
+
+.follow{
+
+    &-btn {
+        color: black;
+        width: 50%;
+
+        &:hover {
+            color: black;
+        }
+    }
+
+    &-count{
+        font-size:16pt
+    }
+
+    &-text{
+        font-size: 8pt;
+    }
+
+    &-list-text{
+        font-size: 18pt;
+    }
+}

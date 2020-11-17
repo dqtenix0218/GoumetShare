@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Post;
-use App\Like;
 use App\Http\Requests\UserModelRequest;
 use Auth;
-use Validator;
+
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -23,7 +22,10 @@ class UsersController extends Controller
             ->orderBy('created_at', 'desc')
             ->simplePaginate(5);
 
-        return view('user/show', ['user' => $user, 'posts' => $posts]);
+        $count_followings=User::find($user_id)->followings()->count();
+        $count_followers=User::find($user_id)->followers()->count();
+
+        return view('user/show', ['user' => $user, 'posts' => $posts,'count_followings'=>$count_followings, 'count_followers'=>$count_followers]);
     }
 
     public function edit()

@@ -40,4 +40,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/comments/{comment_id}', 'CommentsController@delete');
     //場所確認画面
     Route::get('posts/{post_address}', 'PostsController@getAddressById');
+    //フォロー
+    Route::get('/users/{user_id}/follow','UserFollowController@store');
+    //フォロー解除
+    Route::get('/users/{user_id}/unfollow', 'UserFollowController@destroy');
+    //フォロー一覧
+    Route::get('/users/{user_id}/followings_list', 'UserFollowController@getFollowingsById');
+    //フォロワー一覧
+    Route::get('/users/{user_id}/followers_list','UserFollowController@getFollowersById');
+
 });

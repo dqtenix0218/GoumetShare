@@ -36,8 +36,29 @@
       <div class="row">
         <p>
           {{ $user->email }}
+
+          <div class="pl-sm-4 d-flex">
+            <div class="p-2 d-flex flex-column align-items-center">
+            <a class="my-0 black-color no-text-decoration follow-count" href="/users/{{$user->id}}/followings_list">
+                <strong>{{$count_followings}}</strong></a>
+              <span class="follow-text">フォロー</span>
+            </div>
+            <div class="p-2 d-flex flex-column align-items-center">
+              <a class="my-0 black-color no-text-decoration follow-count" href="/users/{{$user->id}}/followers_list">
+                <strong>{{ $count_followers }}</strong></a>
+              <span class="follow-text">フォロワー</span>
+           </div>
+          </div>
         </p>
       </div>
+
+      @if ($user->id != Auth::user()->id)
+        @if(Auth::user()->is_following($user->id))
+          <a class="btn btn-primary follow-btn " href="/users/{{$user->id}}/unfollow">フォローを外す</a>
+        @else
+          <a class="btn btn-primary follow-btn " href="/users/{{$user->id}}/follow">フォローする</a>
+        @endif
+      @endif
     </div>
   </div>
 </div>
