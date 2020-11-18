@@ -81,6 +81,7 @@ class User extends Authenticatable
         }
     }
 
+
     public function scopeGetUserById($query, $id)
     {
         return $query->where('id', $id);

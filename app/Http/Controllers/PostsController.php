@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use App\Http\Requests\CreatePostRequest;
 use Auth;
 use Validator;
@@ -14,26 +15,32 @@ class PostsController extends Controller
     public function index()
     {
         //レコードを取得
-        $posts = Post::orderBy('created_at', 'desc')
-            ->simplePaginate(5);
+        $user = Auth::user();
+        $followings = $user->followings()->get();
 
+        if ($followings->isEmpty()) {
+            $posts = Post::orderBy('created_at', 'desc')
+                ->paginate(5);
+        } else {
+            $followings_ids = $user->followings()->pluck('follow_id')->toArray();
+            $posts = Post::WhereIn('user_id', $followings_ids)
+                ->orderBy('created_at', 'desc')
+                ->paginate(5);
+        }
         return view('post/index', ['posts' => $posts]);
     }
 
     public function search(Request $request)
     {
-        //検索結果を取得
-        $search_posts = Post::search($request->search)
-            ->orderBy('created_at', 'desc')->simplePaginate(5);
-
-        $validator = Validator::make($request->all(), ['search' => 'required']);
-        if ($validator->fails()) {
-            return redirect("/");
-        } else {
-
-            return view('post/index', ['posts' => $search_posts]);
+        if(empty($request->search)){
+            $posts = Post::orderBy('created_at', 'desc')
+            ->paginate(5);
+        }else{
+            $posts = Post::search($request->search)
+            ->orderBy('created_at', 'desc')->paginate(5);
         }
-    }
+            return view('post/index', ['posts' => $posts]);
+        }
 
     public function new()
     {
