@@ -24,6 +24,7 @@ class PostsController extends Controller
         } else {
             $followings_ids = $user->followings()->pluck('follow_id')->toArray();
             $posts = Post::WhereIn('user_id', $followings_ids)
+                ->orWhere('user_id',$user->id)
                 ->orderBy('created_at', 'desc')
                 ->paginate(5);
         }
