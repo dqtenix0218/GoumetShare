@@ -10,7 +10,7 @@
 1. 下記のコマンドプロジェクトをクローンする  
   `git clone https://github.com/dqtenix0218/GourmetShare`
 
-2. 下記のコマンドでcomposerをアップデートする  
+2. cdコマンドでクローンしたディレクトリに移動し、下記のコマンドでcomposerをアップデートする  
   `composer update`
 
 3. 下記のコマンドで.env.exampleファイルをコピーし.envを作成する  
